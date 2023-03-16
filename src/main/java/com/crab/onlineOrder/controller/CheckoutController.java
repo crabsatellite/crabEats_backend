@@ -14,7 +14,6 @@ public class CheckoutController {
 
     private final CartService cartService;
 
-
     public CheckoutController(CartService cartService) {
         this.cartService = cartService;
     }
