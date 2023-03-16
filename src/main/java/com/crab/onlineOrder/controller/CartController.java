@@ -21,7 +21,7 @@ public class CartController {
 
     @RequestMapping(value = "/cart", method = RequestMethod.GET)
     @ResponseBody
-    public Cart getCart(){
+    public Cart getCart() {
         return cartService.getCart();
     }
 }

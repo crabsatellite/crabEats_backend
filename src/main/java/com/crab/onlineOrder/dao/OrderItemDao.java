@@ -1,4 +1,5 @@
 package com.crab.onlineOrder.dao;
+
 import com.crab.onlineOrder.entity.OrderItem;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -15,8 +16,6 @@ public class OrderItemDao {
     public OrderItemDao(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
-
-
 
 
     public void save(OrderItem orderItem) {
@@ -37,8 +36,6 @@ public class OrderItemDao {
             }
         }
     }
-
-
 
 
 }

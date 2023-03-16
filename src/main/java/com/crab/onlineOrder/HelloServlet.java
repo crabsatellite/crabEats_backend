@@ -1,14 +1,14 @@
 package com.crab.onlineOrder;
 
-import java.io.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.json.JSONObject;
-import org.apache.commons.io.IOUtils;
-
 import com.crab.onlineOrder.entity.Customer;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
 @WebServlet(name = "helloServlet", value = "/hello-servlet")
 public class HelloServlet extends HttpServlet {
     private String message;

@@ -16,8 +16,6 @@ public class CustomerService {
     private PasswordEncoder passwordEncoder;
 
 
-
-
     @Autowired
     public CustomerService(CustomerDao customerDao, PasswordEncoder passwordEncoder) {
         this.customerDao = customerDao;

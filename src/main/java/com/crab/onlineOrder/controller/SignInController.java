@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
@@ -21,7 +20,7 @@ public class SignInController {
 
 
     // we only process the failed login request here, if login successfully, it will automatically redirect to home page
-    @RequestMapping(value="/login")
+    @RequestMapping(value = "/login")
     public void login(@RequestParam(value = "error") String error, HttpServletResponse response) throws IOException {
         response.setStatus(HttpStatus.UNAUTHORIZED.value());
         Map<String, Object> data = new HashMap<>();

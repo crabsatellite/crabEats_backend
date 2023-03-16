@@ -1,4 +1,5 @@
 package com.crab.onlineOrder.service;
+
 import com.crab.onlineOrder.dao.CartDao;
 import com.crab.onlineOrder.entity.Cart;
 import com.crab.onlineOrder.entity.Customer;
@@ -45,6 +46,6 @@ public class CartService {
         Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
         String username = loggedInUser.getName();
         Customer customer = customerService.getCustomer(username);
-        if (customer  != null) cartDao.removeAllCartItems(customer.getCart());
+        if (customer != null) cartDao.removeAllCartItems(customer.getCart());
     }
 }
