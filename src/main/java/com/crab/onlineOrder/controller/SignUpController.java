@@ -4,6 +4,7 @@ import com.crab.onlineOrder.entity.Customer;
 import com.crab.onlineOrder.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,8 +25,14 @@ public class SignUpController {
 
 
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
-    @ResponseStatus(value = HttpStatus.CREATED)
-    public void signUp(@RequestBody Customer customer) {
-        customerService.signUp(customer);
+    public ResponseEntity<?> signUp(@RequestBody Customer customer) {
+        try {
+            customerService.signUp(customer);
+            System.out.println("sign up success");
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
+        }
     }
 }

@@ -17,22 +17,26 @@ public class CustomerDao {
     private SessionFactory sessionFactory;
 
 
-    public void signUp(Customer customer) {
+    public void signUp(Customer customer) throws Exception {
         Authorities authorities = new Authorities();
         authorities.setAuthorities("ROLE_USER");
         authorities.setEmail(customer.getEmail());
 
-
         Session session = null;
         try {
             session = sessionFactory.openSession();
+            // check if the email has been registered
+            Customer customer1 = session.get(Customer.class, customer.getEmail());
+            if (customer1 != null) {
+                throw new Exception("This email has been registered");
+            }
             session.beginTransaction();
             session.save(authorities);
             session.save(customer);
             session.getTransaction().commit();
         } catch (Exception ex) {
-            ex.printStackTrace();
             if (session != null) session.getTransaction().rollback();
+            throw ex; // 将异常抛出，以便在 CustomerService 中处理
         } finally {
             if (session != null) {
                 session.close();

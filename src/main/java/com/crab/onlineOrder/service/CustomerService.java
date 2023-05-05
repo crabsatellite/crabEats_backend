@@ -23,13 +23,19 @@ public class CustomerService {
     }
 
 
-    public void signUp(Customer customer) {
+    public void signUp(Customer customer) throws Exception {
         Cart cart = new Cart();
         customer.setCart(cart);
         customer.setEnabled(true);
         customer.setPassword(passwordEncoder.encode(customer.getPassword()));
-        customerDao.signUp(customer);
+
+        try {
+            customerDao.signUp(customer);
+        } catch (Exception ex) {
+            throw ex;
+        }
     }
+
 
 
     public Customer getCustomer(String email) {
